@@ -6,7 +6,7 @@ function Categories({ value, onChangeCategory }) {
     "Вегитарианские",
     "Гриль",
     "Острые",
-    "Микс 4 пиццы",
+    "Микс пиццы",
   ];
 
   return (
