@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchContext } from "../App";
 import { setCategoryId } from "../redux/slices/filterSlice";
+import axios from "axios";
 
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
@@ -26,19 +27,18 @@ const Home = () => {
     setIsLoading(true);
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const search = searchValue ? `&search=${searchValue}` : "";
-    const sortBy = sort.sortProperty;//.replace('-', '');
-    const order = sort.sortProperty;//.includes('-') ? 'asc' : 'desc';
+    const sortBy = sort.sortProperty; //.replace('-', '');
+    const order = sort.sortProperty; //.includes('-') ? 'asc' : 'desc';
 
-    fetch(
-      `https://6479b561a455e257fa639ac1.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
-    )
+    axios
+      .get(
+        `https://6479b561a455e257fa639ac1.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`
+      )
       .then((res) => {
-        return res.json();
-      })
-      .then((json) => {
-        setItems(json);
+        setItems(res.data);
         setIsLoading(false);
       });
+
     window.scrollTo(0, 0);
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
