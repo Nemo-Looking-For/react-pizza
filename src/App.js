@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+      <SearchContext.Provider value={{ setSearchValue }}>
         <div className="wrapper">
           <Header />
           <div className="content">

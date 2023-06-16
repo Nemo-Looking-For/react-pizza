@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SearchContext } from "../App";
 import { setCategoryId } from "../redux/slices/filterSlice";
@@ -18,12 +18,12 @@ const Home = () => {
     dispatch(setCategoryId(id));
   };
 
-  const { searchValue } = useContext(SearchContext);
-  const [items, setItems] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCarrentPage] = useState(1);
+  const { searchValue } = React.useContext(SearchContext);
+  const [items, setItems] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [currentPage, setCarrentPage] = React.useState(1);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setIsLoading(true);
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const search = searchValue ? `&search=${searchValue}` : "";

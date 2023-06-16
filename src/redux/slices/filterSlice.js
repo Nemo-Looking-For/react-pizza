@@ -4,18 +4,19 @@ const initialState = {
   categoryId: 0,
   sort: {
     name: "Популярности",
-    sortPtoprty: "rating",
+    sortProperty: "rating",
   },
 };
 
 const filterSlice = createSlice({
-  name: "filters",
+  name: "filter",
   initialState,
   reducers: {
-    setCategoryId(state, action) {
+    setCategoryId: (state, action) => {
+      console.log(action);
       state.categoryId = action.payload;
     },
-    setSort(state, action) {
+    setSort: (state, action) => {
       state.sort = action.payload;
     },
   },
