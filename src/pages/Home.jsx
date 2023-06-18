@@ -55,12 +55,12 @@ const Home = () => {
   return (
     <div className="container">
       <div className="content__top">
-        <Pagination /*currentPage={currentPage}*/ onChangePage={onChangePage} />
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
         <Sort />
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
+      <Pagination /*currentPage={currentPage}*/ onChangePage={onChangePage} />
     </div>
   );
 };
